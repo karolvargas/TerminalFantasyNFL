@@ -19,6 +19,7 @@ def welcome():
         print("Um lets try that again...")
         welcome()
 
+
 def offense():
     statis = raw_input('Enter the word: passing, rushing, or receiving. To see those stats: and the year you would like to see.(must be lowercase) ')
     p = str("passing")
@@ -34,29 +35,74 @@ def offense():
         print("Error!!! That input did not work! Try again: ")
         offense()
 
+#def tuple_creator(usr_year, week):
+ #   usr_year1 = usr_year
+  #  week1 = week
+
+#    yearLi
+
+#    return tuple1
+
+
+
+
 def passing(statis):
-    usr_year, week = map(int, input("What year and week  would you like to view? (ex. 2018 8): ").split())
-    if week > 17:
-        print("Theres only 17 weeks man! Lets try this again: ")
-        passing(statis, year)
-    elif week <= 0:
-        print("Are you done messing around bro... Again")
-        passing(statis, year)
-    limit = raw_input("Enter the amount of people you would like to see for top stats for week ",week," of ",usr_year,". I.E. TOP 5, 10, 15, 20: ")
-    limit = [int(limit)]
-    games = nflgame.games(usr_year, week=week)
+    usr_first = raw_input("What year and week  would you like to view? (ex. 2018 8): ")
+    usr_year = int(usr_first.split(" ")[0])
+    week = str(usr_first.split(" ")[1])
+    timeList = [usr_year, week]
+    limit_in = raw_input("Enter the amount of people you would like to see for top stats for this week of this year. I.E. TOP 5, 10, 15, 20: ")
+    limit = int(limit_in)
+    timeList.append(limit)
+    print(timeList)
+    games = nflgame.games(timeList[0], week=timeList[1])
     players = nflgame.combine_game_stats(games)
-    for p in players.passing().sort('passing_yds').limit(limit):
+    for p in players.passing().sort('passing_yds').limit(20):
         msg = '%s %d carries for %d yards and %d TDs'
         print msg % (p, p.passing_att, p.passing_yds, p.passing_tds)
+    return usr_year
+
+
+def rushing(statis):
+    usr_first = raw_input("What year and week  would you like to view? (ex. 2018 8): ")
+    usr_year = int(usr_first.split(" ")[0])
+    week = str(usr_first.split(" ")[1])
+    timeList = [usr_year, week]
+    limit_in = raw_input("Enter the amount of people you would like to see for top stats for this week of this year. I.E. TOP 5, 10, 15, 20: ")
+    limit = int(limit_in)
+    timeList.append(limit)
+    print(timeList)
+    games = nflgame.games(timeList[0], week=timeList[1])
+    players = nflgame.combine_game_stats(games)
+    for p in players.rushing().sort('rushing_yds').limit(timeList[2]):
+       msg = '%s %d carries for %d yards and %d TDs'
+       print msg % (p, p.rushing_att, p.rushing_yds, p.rushing_tds)
+    return usr_year
+
+
+def receiving(statis):
+    usr_first = raw_input("What year and week  would you like to view? (ex. 2018 8): ")
+    usr_year = int(usr_first.split(" ")[0])
+    week = str(usr_first.split(" ")[1])
+    timeList = [usr_year, week]
+    limit_in = raw_input("Enter the amount of people you would like to see for top stats for this week of this year. I.E. TOP 5, 10, 15, 20: ")
+    limit = int(limit_in)
+    timeList.append(limit)
+    print(timeList)
+    games = nflgame.games(timeList[0], week=timeList[1])
+    players = nflgame.combine_game_stats(games)
+    for p in players.receiving().sort('receiving_yds').limit(timeList[2]):
+       msg = '%s %d catches for %d yards and %d TDs'
+       print msg % (p, p.receiving_att, p.receiving_yds, p.receiving_tds)
+    return usr_year
 
 
 welcome()
 
 
 """
-def defense(): 
-    statis, year = in       
+def defense():
+    statis, year = in
 
 
 
