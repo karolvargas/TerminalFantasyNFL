@@ -5,7 +5,7 @@
 pip2 install nflgame
 ```
 
-#To run program:
+## To run program:
 
 - First:
   Enter whether you want to see Offense or Defense player stats
