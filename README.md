@@ -8,11 +8,15 @@ pip2 install nflgame
 ## To run program:
 
 - First:
-  ,,,
-  cd nflgame2
-  python2 fantasyFootballPlay.py
-  ,,,
+```
+ cd nflgame2
+```
+then run
+```
+ python2 fantasyFootballPlay.py
+```
   Enter whether you want to see Offense or Defense player stats
+
  
 - Second:
   Enter what stats you want to see
